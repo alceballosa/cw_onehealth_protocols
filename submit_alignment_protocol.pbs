@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -N influenza55_59	 	# nombre identificador del trabajo
+#PBS -q batch				# Nombre de la cola de ejecucion
+#PBS -l nodes=1:ppn=4   	# nodes=1 numero de nodos a emplear; ppn=20 numero de procesadores a emplear
+#PBS -l mem=32Gb
+#PBS -l walltime=168:00:00 	# tiempo maximo de ejecucion
+#PBS -m bea            		# Bandera que indica que envie correo al iniciar y finalizar ejecucion
+
+
+
+#PBS -M xxxxx@xxx.xxx    	# Correo de notificacion del estado del trabajo
+
+# direcorio de trabajo
+WORKDIR="/exports/home/genocwohc_med"       
+
+EXPERIMENT_FOLDER="influenza_55_to_59"
+INPUT_FILES_FOLDER="protocol_input_files"
+BARCODES_FILE="influenza_barcodes"
+REFERENCE_GENOME="influenza_ref_ca09.fasta"
+LOG_FILE="$WORKDIR/${BARCODES_FILE}.log"
+
+cd $WORKDIR
+
+module purge							# Desmonta modulosprevios
+module load Anaconda/Anaconda3          # Para ver modulos disponibles ejecudo module avail 
+module load Guppy/3.0.3
+conda init bash
+conda activate ohgenom
+chmod +x alignment_protocol.sh
+
+source alignment_protocol.sh $WORKDIR/$EXPERIMENT_FOLDER $WORKDIR/$INPUT_FILES_FOLDER/reference_genomes/$REFERENCE_GENOME $WORKDIR/$INPUT_FILES_FOLDER/${BARCODES_FILE}.txt  &> $LOG_FILE
+
+
