@@ -1,0 +1,29 @@
+#!/bin/bash
+#PBS -N protocolo_artic	   				# nombre identificador del trabajo
+#PBS -q batch							# Nombre de la cola de ejecucion
+#PBS -l nodes=nodo-a-007:ppn=1   		# nodes=1 numero de nodos a emplear
+										# ppn=20 numero de procesadores a emplear
+#PBS -l mem=12Gb
+#PBS  -l walltime=168:00:00      		# tiempo maximo de ejecucion
+#PBS -m bea                     		# Bandera que indica que envie correo al iniciar y finalizar ejecucion
+
+
+
+#PBS -M xxxxxx@xxxx.xxxx     			# Correo de notificacion del estado del trabajo
+
+WORKDIR="/exports/home/genocwohc_med"  	# directrio de trabajo
+EXPERIMENT_FOLDER="seq180421"
+LOG_FILE="protocolo_artic.log"
+
+
+cd $WORKDIR
+
+module purge							# Desmonta modulosprevios
+module load Anaconda/Anaconda3          # Para ver modulos disponibles ejecudo module avail 
+module load Guppy/4.5.2
+conda init bash
+conda activate ohgenom
+chmod +x covid_protocol.sh
+
+source covid_protocol.sh $WORKDIR/$EXPERIMENT_FOLDER $WORKDIR/protocol_input_files/primer_schemes  &> $LOG_FILE
+

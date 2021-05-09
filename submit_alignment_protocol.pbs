@@ -23,7 +23,7 @@ cd $WORKDIR
 
 module purge							# Desmonta modulosprevios
 module load Anaconda/Anaconda3          # Para ver modulos disponibles ejecudo module avail 
-module load Guppy/3.0.3
+module load Guppy/4.5.2
 conda init bash
 conda activate ohgenom
 chmod +x alignment_protocol.sh
