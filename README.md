@@ -5,7 +5,7 @@ This repository includes the necessary files for carrying out the protocols at t
 
 The protocols have been tested with Miniconda 3 in Ubuntu 20.04 and CentOS 7.5.
 
-All tasks should be carried inside a folder carried local or outside of the repo's folder to avoid cluttering it with unnecessary files.
+All tasks should be carried inside a folder called "local" or outside of the repo's folder to avoid cluttering it with unnecessary files.
 
 
 ### Installing Miniconda 3 (Bash):
@@ -25,6 +25,3 @@ All tasks should be carried inside a folder carried local or outside of the repo
 # Disclaimers:
 
 - the primer_schemes folder is copied from https://github.com/artic-network/artic-ncov2019
-
-
-
