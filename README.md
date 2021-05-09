@@ -10,18 +10,21 @@ All tasks should be carried inside a folder carried local or outside of the repo
 
 ### Installing Miniconda 3 (Bash):
 
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh -b -p ~/miniconda3
-rm Miniconda3-latest-Linux-x86_64.sh
-cd ~/miniconda3/bin
-./conda init
+- wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+- bash Miniconda3-latest-Linux-x86_64.sh -b -p ~/miniconda3
+- rm Miniconda3-latest-Linux-x86_64.sh
+- cd ~/miniconda3/bin
+- ./conda init
 
 
 ### Creating the ohgenom environment
 
-conda env create -f environment.yml
+- conda env create -f environment.yml
 
 
+# Disclaimers:
+
+- the primer_schemes folder is copied from https://github.com/artic-network/artic-ncov2019
 
 
 
