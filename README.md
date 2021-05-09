@@ -1,4 +1,4 @@
-# cw_onehealth_protocols
+# Colombia-Wisconsin One Health Consortium protocols 
 
 This repository includes the necessary files for carrying out the protocols at the Colombia Wisconsin OH computational resources, including ABACO and Protek.
 
