@@ -1,9 +1,9 @@
-#experiment_folders
-
-
-#output files
-.log
+# experiment_folders
 local/
+
+# output files
+.log
+.out
 
 
 # Byte-compiled / optimized / DLL files
