@@ -17,10 +17,15 @@ All tasks should be carried inside a folder called "local" or outside of the rep
 - ./conda init
 
 
+### Download or clone the repository:
+
+- git clone https://github.com/alceballosa/cw_onehealth_protocols (must be logged into github)
+- cd cw_onehealth_protocols
+
 ### Creating the ohgenom environment
 
 - conda env create -f environment.yml
-
+- conda activate ohgenom
 
 # Disclaimers:
 
