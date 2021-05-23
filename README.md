@@ -11,16 +11,21 @@ All tasks should be carried inside a folder called "local" or outside of the rep
 ### Installing Miniconda 3 (Bash):
 
 - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-- bash Miniconda3-latest-Linux-x86_64.sh -b -p ~/miniconda3
+- bash Miniconda3-latest-Linux-x86_64.sh -b -p ~/miniconda3 [or] /miniconda3/bin
 - rm Miniconda3-latest-Linux-x86_64.sh
-- cd ~/miniconda3/bin
+- cd ~/miniconda3/bin [or] cd /miniconda3/bin
 - ./conda init
 
+
+### Download or clone the repository:
+
+- git clone https://github.com/alceballosa/cw_onehealth_protocols (must be logged into github)
+- cd cw_onehealth_protocols
 
 ### Creating the ohgenom environment
 
 - conda env create -f environment.yml
-
+- conda activate ohgenom
 
 # Disclaimers:
 
