@@ -6,10 +6,10 @@ conda activate ohgenom
 
 ### Basecalling ###
 
-#guppy_basecaller -i $1/fast5/ -s $1/guppy/ -c dna_r9.4.1_450bps_fast.cfg --cpu_threads_per_caller 100 --as_cpu_threads_per_scaler 40 --as_num_scalers 40 --num_alignment_threads 40 --num_callers 1
+guppy_basecaller -i $1/fast5/ -s $1/guppy/ -c dna_r9.4.1_450bps_fast.cfg --cpu_threads_per_caller 100 --as_cpu_threads_per_scaler 40 --as_num_scalers 40 --num_alignment_threads 40 --num_callers 1
 
-#### Demultiplexing ###
-#guppy_barcoder [--require_barcodes_both_ends] -t 100 -i $1/guppy/pass/ -s $1/barcode/ --barcode_kits "EXP-NBD196"
+### Demultiplexing ###
+guppy_barcoder [--require_barcodes_both_ends] -t 100 -i $1/guppy/pass/ -s $1/barcode/ --barcode_kits "EXP-NBD196"
 
 
 ##-----------Carpetas dentro de artic ncov2019-------###
