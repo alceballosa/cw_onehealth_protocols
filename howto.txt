@@ -1,0 +1,38 @@
+### NOHUP
+
+nohup ./alignment_protocol.sh local/seq240521 > local/seq240521/log.out 2>&1 &
+
+
+nohup ./alignment_protocol.sh local/seq240521 protocol_input_files/reference_genomes/influenza_ref_ca09.fasta protocol_input_files/influenza_barcodes.txt> local/seq240521/log.out 2>&1 &
+
+
+nohup /home/generico/oh-dev/cw_onehealth_protocols/covid_protocol_test_alberto.sh /home/generico/oh-dev/nextflow_testing/covid_samples /home/generico/oh-dev/cw_onehealth_protocols/protocol_input_files/primer_schemes > /home/generico/oh-dev/nextflow_testing/covid_samples/log.out 2>&1 &
+
+
+### BEAST
+
+nohup beast XXXX  > log.out 2>&1 &
+
+### SPADES
+
+http://cab.spbu.ru/files/release3.11.1/manual.html
+spades.py --isolate -s barcode39.fastq -t 32 -o ./res
+### RAGTAG
+
+ragtag.py scaffold reference.fa query.fa -o  ./output_folder -t 20
+ragtag.py scaffold ../../../../../protocol_input_files/reference_genomes/infl
+uenza_n2.fasta fastq_runid_9f987849fa88365d012acb119561949477ba3d82_0.fastq -o  ./output_folder -t 20
+https://github.com/malonge/RagTag
+
+
+nextflow run nfile.nf -w /dev/shm/work
+
+
+nextflow run covid.nf -c covid.conf -w /dev/shm/work
+ nextflow run covid_dsl2.nf -c covid.conf -w /dev/shm/work -resume -with-trace -with-report reports/cov_report.html
+
+ nextflow run covid.nf -c covid.conf -w /dev/shm/work
+ nextflow run covid_dsl2.nf -c covid.conf -w /dev/shm/work -resume -with-report reports/cov_report.html
+
+
+nextflow run covid_dsl2.nf -c covid.conf -w /dev/shm/work -resume -with-report reports/cov_report.html -bg > log.out

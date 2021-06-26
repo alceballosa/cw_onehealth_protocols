@@ -1,4 +1,4 @@
-# Colombia-Wisconsin One Health Consortium genomics protocols 
+# Colombia-Wisconsin One Health Consortium genomics protocols
 
 
 This repository includes the necessary files for carrying out the protocols at the Colombia Wisconsin OH computational resources, including ABACO and Protek.
@@ -39,6 +39,9 @@ All tasks should be carried inside a folder called "local" or outside of the rep
 
 - conda env create -f environment.yml
 - conda activate ohgenom
+
+### Update nextflow for workflows
+- nextflow self-update
 
 # Disclaimers:
 

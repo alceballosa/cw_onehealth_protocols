@@ -1,12 +1,15 @@
 name: ohgenom
 channels:
   - artic-network
+  - bioconda/label/cf201901
+  - biocore
   - bioconda
   - conda-forge
   - defaults
 dependencies:
   - _libgcc_mutex=0.1=conda_forge
   - _openmp_mutex=4.5=1_gnu
+  - _sysroot_linux-64_curr_repodata_hack=3=haa98f57_10
   - absl-py=0.11.0=py36h5fab9bb_0
   - appdirs=1.4.4=pyh9f0ad1d_0
   - args=0.1.0=py36h9f0ad1d_1003
@@ -16,15 +19,21 @@ dependencies:
   - astor=0.8.1=pyh9f0ad1d_0
   - attrs=20.3.0=pyhd3deb0d_0
   - bcftools=1.10.2=h4f4756c_3
+  - beagle=5.1_24Aug19.3e8=hdfd78af_1
+  - beagle-lib=3.1.2=h7d875b9_3
+  - beast=1.10.4=hdfd78af_2
   - biopython=1.78=py36h8f6f2f9_2
   - blas=2.14=openblas
+  - blast-plus=2.2.31=0
   - boost-cpp=1.70.0=h7b93d67_3
+  - bowtie2=2.3.4.3=py36h2d50403_0
   - brotlipy=0.7.0=py36h8f6f2f9_1001
   - bwa=0.7.17=hed695b0_7
   - bzip2=1.0.8=h7f98852_4
   - c-ares=1.17.1=h36c2ea0_0
-  - ca-certificates=2021.4.13=h06a4308_1
-  - certifi=2020.12.5=py36h06a4308_0
+  - ca-certificates=2021.5.25=h06a4308_1
+  - cap3=10.2011=h779adbc_3
+  - certifi=2021.5.30=py36h06a4308_0
   - cffi=1.14.5=py36hc120d54_0
   - chardet=4.0.0=py36h5fab9bb_1
   - click=7.1.2=pyh9f0ad1d_0
@@ -32,12 +41,15 @@ dependencies:
   - coloredlogs=15.0=py36h5fab9bb_0
   - colormath=3.0.0=py_2
   - configargparse=1.3=pyhd8ed1ab_0
+  - coreutils=8.32=h7b6447c_0
   - cryptography=3.4.4=py36hc39840e_0
   - cycler=0.10.0=py_2
   - datrie=0.8.2=py36h8c4c3a4_1
   - decorator=4.4.2=py_0
+  - deprecated=1.2.12=pyhd3eb1b0_0
   - docutils=0.16=py36h5fab9bb_3
   - eigen=3.3.9=h4bd325d_1
+  - fastqc=0.11.8=0
   - freetype=2.10.4=h0708190_1
   - future=0.18.2=py36h5fab9bb_3
   - gast=0.4.0=pyh9f0ad1d_0
@@ -57,14 +69,17 @@ dependencies:
   - iniconfig=1.1.1=pyh9f0ad1d_0
   - intervaltree=3.0.2=py_0
   - isa-l=2.30.0=ha770c72_3
+  - java-jdk=8.0.92=1
   - jinja2=2.11.3=pyh44b312d_0
   - jpeg=9d=h36c2ea0_0
   - jsonschema=3.2.0=pyhd8ed1ab_3
   - k8=0.2.5=he513fc3_0
   - keras-applications=1.0.8=py_1
   - keras-preprocessing=1.1.2=pyhd8ed1ab_0
+  - kernel-headers_linux-64=3.10.0=h57e8cba_10
   - kiwisolver=1.3.1=py36h605e78d_1
   - krb5=1.17.2=h926e7f8_0
+  - last=874=h2e03b76_4
   - lcms2=2.12=hddcbb42_0
   - ld_impl_linux-64=2.35.1=hea4e1c9_2
   - libblas=3.8.0=14_openblas
@@ -89,12 +104,14 @@ dependencies:
   - libssh2=1.9.0=hab1572f_5
   - libstdcxx-ng=9.3.0=h6de172a_18
   - libtiff=4.2.0=hdc55705_0
+  - libtool=2.4.6=h7b6447c_1005
   - libuv=1.40.0=h7f98852_0
   - libwebp-base=1.2.0=h7f98852_0
   - llvm-meta=7.0.0=0
   - longshot=0.4.1=h80880c6_0
   - lz4-c=1.9.3=h9c3ff4c_0
   - lzstring=1.0.4=py_1001
+  - mafft=7.480=h779adbc_0
   - mappy=2.17=py36h955c1b8_2
   - markdown=3.3.4=pyhd8ed1ab_0
   - markupsafe=1.1.1=py36h8f6f2f9_3
@@ -103,10 +120,15 @@ dependencies:
   - minimap2=2.17=hed695b0_3
   - more-itertools=8.7.0=pyhd8ed1ab_0
   - multiqc=1.9=py_1
+  - mummer=3.23=4
   - muscle=3.8.1551=hc9558a2_5
+  - nanofilt=2.8.0=py_0
+  - nanoget=1.16.1=py_0
+  - nanomath=1.2.1=pyhdfd78af_0
   - nanopolish=0.13.2=he3b7ca5_2
   - ncurses=6.2=h58526e2_4
   - networkx=2.5=py_0
+  - nextflow=0.24.2=0
   - nodejs=15.2.1=h914e61d_0
   - numpy=1.16.1=py36h99e49ec_1
   - numpy-base=1.16.1=py36h2f8d375_1
@@ -119,6 +141,7 @@ dependencies:
   - pandas=0.25.3=py36hb3f55d8_0
   - parasail-python=1.2.4=py36hd181a71_0
   - perl=5.32.0=h36c2ea0_0
+  - perl-threaded=5.26.0=0
   - pigz=2.5=h27826a3_0
   - pillow=8.1.1=py36ha6010c0_0
   - pilon=1.24=hdfd78af_0
@@ -143,6 +166,7 @@ dependencies:
   - pytz=2021.1=pyhd8ed1ab_0
   - pyvcf=0.6.8=py36h9f0ad1d_1002
   - pyyaml=5.4.1=py36h8f6f2f9_0
+  - ragtag=2.0.1=pyhb7b1952_0
   - rampart=1.2.0=0
   - ratelimiter=1.2.0=py_1002
   - readline=8.0=he28a2e2_2
@@ -156,8 +180,10 @@ dependencies:
   - smmap=3.0.5=pyh44b312d_0
   - snakemake-minimal=5.8.1=py_0
   - sortedcontainers=2.3.0=pyhd8ed1ab_0
+  - spades=3.15.2=h95f258a_1
   - spectra=0.0.11=py_1
   - sqlite=3.34.0=h74cdb3f_0
+  - sysroot_linux-64=2.17=h57e8cba_10
   - tar=1.34=ha1f6473_0
   - tensorboard=1.14.0=py36_0
   - tensorflow=1.14.0=hc3e5e64_0
@@ -180,3 +206,4 @@ dependencies:
   - zipp=3.4.0=py_0
   - zlib=1.2.11=h516909a_1010
   - zstd=1.4.8=ha95c52a_1
+prefix: /opt/miniconda3/envs/ohgenom

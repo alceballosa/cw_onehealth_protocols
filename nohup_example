@@ -1,0 +1,7 @@
+nohup PROGRAM_NAME PARAMETER_1 PARAMETER_2 ... PARAMETER_N  > PATH_LOG/log.out 2>&1 &
+
+
+Example:
+
+nohup ./alignment_protocol.sh local/seq240521 > local/seq240521/log.out 2>&1 &
+nohup ./alignment_protocol.sh local/seq240521 protocol_input_files/reference_genomes/influenza_ref_ca09.fasta protocol_input_files/influenza_barcodes.txt> local/seq240521/log.out 2>&1 &
