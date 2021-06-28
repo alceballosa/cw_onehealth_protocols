@@ -68,7 +68,7 @@ conda env create -f environment.yml
 conda activate ohgenom
 ```
 
-### Update nextflow for workflows
+### Update nextflow to enable DSL2 compatibility
 
 ```bash
 nextflow self-update
