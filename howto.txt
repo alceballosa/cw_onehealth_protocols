@@ -25,14 +25,7 @@ uenza_n2.fasta fastq_runid_9f987849fa88365d012acb119561949477ba3d82_0.fastq -o  
 https://github.com/malonge/RagTag
 
 
+
+## NEXTFLOW
 nextflow run nfile.nf -w /dev/shm/work
-
-
-nextflow run covid.nf -c covid.conf -w /dev/shm/work
- nextflow run covid_dsl2.nf -c covid.conf -w /dev/shm/work -resume -with-trace -with-report reports/cov_report.html
-
- nextflow run covid.nf -c covid.conf -w /dev/shm/work
- nextflow run covid_dsl2.nf -c covid.conf -w /dev/shm/work -resume -with-report reports/cov_report.html
-
-
 nextflow run covid_dsl2.nf -log ./local/<logname>.log -c covid.conf -w /dev/shm/work -resume -with-report reports/cov_report.html -bg > ./local/<logname>.out
