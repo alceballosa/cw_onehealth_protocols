@@ -56,7 +56,7 @@ process BARCODE_PROCESSING {
   Processes each barcode with the artic minion pipeline.
 
   Resulting files are stored both at the all_outputs folder -detailed output- and the consensus_only folder -only the consensus fasta file-.
-  
+
   */
 
   maxForks 3

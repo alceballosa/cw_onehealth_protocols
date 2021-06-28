@@ -35,4 +35,4 @@ nextflow run covid.nf -c covid.conf -w /dev/shm/work
  nextflow run covid_dsl2.nf -c covid.conf -w /dev/shm/work -resume -with-report reports/cov_report.html
 
 
-nextflow run covid_dsl2.nf -c covid.conf -w /dev/shm/work -resume -with-report reports/cov_report.html -bg > log.out
+nextflow run covid_dsl2.nf -log ./local/<logname>.log -c covid.conf -w /dev/shm/work -resume -with-report reports/cov_report.html -bg > ./local/<logname>.out
