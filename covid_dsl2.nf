@@ -3,8 +3,8 @@ nextflow.enable.dsl=2
 // params.source_folder = "/home/generico/oh-dev/nextflow_testing/covid_samples"
 // params.scheme_folder = "/home/generico/oh-dev/cw_onehealth_protocols/protocol_input_files/primer_schemes"
 // params.output_folder = params.source_folder+"/results"
-// params.threads_basecalling = "32"
-// params.threads_minion = "16"
+ params.threads_basecalling = "32"
+ params.threads_minion = "16"
 // params.barcode_kit = "EXP-NBD196"
 
 
