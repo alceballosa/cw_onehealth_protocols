@@ -5,10 +5,9 @@ nextflow.enable.dsl=2
 // params.output_folder = params.source_folder+"/results"
 // params.threads_basecalling = "32"
 // params.threads_minion = "16"
-params.barcode_kit = "EXP-NBD196"
+// params.barcode_kit = "EXP-NBD196"
 
-big=params.big
-small=params.small
+
 
 process BASECALLING {
   /*
@@ -21,16 +20,15 @@ process BASECALLING {
   */
 
   echo true
-  cpus big
 
   output:
   path 'basecalled_folder'
 
   script:
   """
-  guppy_basecaller -i ${params.input}/${params.dir}/fast5/ -s ${params.input}/${params.dir}/guppy/ -c dna_r9.4.1_450bps_fast.cfg --cpu_threads_per_caller ${task.cpus} --as_cpu_threads_per_scaler ${task.cpus} --as_num_scalers 32 --num_alignment_threads ${task.cpus} --num_callers 1 --resume
-  mkdir ${params.output}/basecalled_folder
-  cat ${params.input}/${params.dir}/guppy/pass/*.fastq > ${params.output}/basecalled_folder/all.fastq
+  guppy_basecaller -i ${params.source_folder}/fast5/ -s ${params.source_folder}/guppy/ -c dna_r9.4.1_450bps_fast.cfg --cpu_threads_per_caller ${params.threads_basecalling} --as_cpu_threads_per_scaler ${params.threads_basecalling} --as_num_scalers 32 --num_alignment_threads ${params.threads_basecalling} --num_callers 1 --resume
+  mkdir basecalled_folder
+  cat ${params.source_folder}/guppy/pass/*.fastq > basecalled_folder/all.fastq
   """
 }
 
@@ -42,8 +40,6 @@ process DEMULTIPLEXING {
   */
 
   echo true
-  cpus big
-
   input:
     path basecalled_folder
 
@@ -52,7 +48,7 @@ process DEMULTIPLEXING {
 
   script:
     """
-    guppy_barcoder [--require_barcodes_both_ends] -t ${task.cpus} -i $basecalled_folder -s ./ --barcode_kits ${params.barcode_kit}
+    guppy_barcoder [--require_barcodes_both_ends] -t ${params.threads_basecalling} -i $basecalled_folder -s ./ --barcode_kits ${params.barcode_kit}
     """
 }
 
@@ -67,10 +63,9 @@ process BARCODE_PROCESSING {
 
   maxForks 3
   echo true
-  cpus small
 
-  publishDir "${params.output}/all_outputs", pattern: "res_${barcode_folder.baseName}/*", mode:'copy'
-  publishDir "${params.output}/consensus_only", pattern: "${barcode_folder.baseName}.consensus.fasta", mode:'copy'
+  publishDir "${params.output_folder}/all_outputs", pattern: "res_${barcode_folder.baseName}/*", mode:'copy'
+  publishDir "${params.output_folder}/consensus_only", pattern: "${barcode_folder.baseName}.consensus.fasta", mode:'copy'
 
   input:
     path barcode_folder
@@ -86,7 +81,7 @@ process BARCODE_PROCESSING {
 
   mkdir res_${barcode_folder.baseName}
 
-  artic minion --normalise 200 --threads ${task.cpus} --scheme-directory ${params.scheme_folder} --read-file ${barcode_folder}/filtered_${barcode_folder.baseName}.fastq --fast5-directory ${params.input}/${params.dir}/fast5/ --sequencing-summary ${params.input}/${params.dir}/guppy/sequencing_summary.txt nCoV-2019/V3 res_${barcode_folder.baseName}/${barcode_folder.baseName} --bwa
+  artic minion --normalise 200 --threads ${params.threads_minion} --scheme-directory ${params.scheme_folder} --read-file ${barcode_folder}/filtered_${barcode_folder.baseName}.fastq --fast5-directory ${params.source_folder}/fast5/ --sequencing-summary ${params.source_folder}/guppy/sequencing_summary.txt nCoV-2019/V3 res_${barcode_folder.baseName}/${barcode_folder.baseName} --bwa
 
   cp res_${barcode_folder.baseName}/${barcode_folder.baseName}.consensus.fasta ./${barcode_folder.baseName}.consensus.fasta
   """
