@@ -3,8 +3,8 @@ nextflow.enable.dsl=2
 // params.source_folder = "/home/generico/oh-dev/nextflow_testing/covid_samples"
 // params.scheme_folder = "/home/generico/oh-dev/cw_onehealth_protocols/protocol_input_files/primer_schemes"
 // params.output_folder = params.source_folder+"/results"
- params.threads_basecalling = "32"
- params.threads_minion = "16"
+ params.threads_basecalling = "10"
+ params.threads_minion = "5"
 // params.barcode_kit = "EXP-NBD196"
 
 
@@ -26,7 +26,7 @@ process BASECALLING {
 
   script:
   """
-  guppy_basecaller -i ${params.source_folder}/fast5/ -s ${params.source_folder}/guppy/ -c dna_r9.4.1_450bps_fast.cfg --cpu_threads_per_caller ${params.threads_basecalling} --as_cpu_threads_per_scaler ${params.threads_basecalling} --as_num_scalers 32 --num_alignment_threads ${params.threads_basecalling} --num_callers 1 --resume
+  guppy_basecaller -i ${params.source_folder}/fast5/ -s ${params.source_folder}/guppy/ -c dna_r9.4.1_450bps_fast.cfg --cpu_threads_per_caller ${params.threads_basecalling} --as_cpu_threads_per_scaler ${params.threads_basecalling} --as_num_scalers 32 --num_alignment_threads ${params.threads_basecalling} --num_callers 1
   mkdir basecalled_folder
   cat ${params.source_folder}/guppy/pass/*.fastq > basecalled_folder/all.fastq
   """
