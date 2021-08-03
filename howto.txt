@@ -29,3 +29,16 @@ https://github.com/malonge/RagTag
 ## NEXTFLOW
 nextflow run nfile.nf -w /dev/shm/work
 nextflow run covid_dsl2.nf -log ./local/<logname>.log -c covid.conf -w /dev/shm/work -resume -with-report reports/cov_report.html -bg > ./local/<logname>.out
+
+
+nextflow  -c covid.conf run covid_dsl2.nf -log ./local/seq010721/logs/log.log -w /dev/shm/work -resume -with-report ./local/seq010721/reports/cov_report.html -with-timeline ./local/seq010721/reports/cov_timeline.html -bg > ./local/seq010721/log.out
+
+#NEXTFLOW SI SIRVE:
+
+nextflow -C covid.conf run covid_dsl2.nf -w /dev/shm/work -resume -with-report ./local/seq010721/reports/cov_report.html -with-timeline ./local/seq010721/reports/cov_timeline.html -bg > ./local/seq010721/log.out
+
+
+
+POSEIDON NEXTFLOW:
+
+NXF_VER=20.10.0 nextflow run hoelzer/poseidon -r v1.0.1 --fasta ~/.nextflow/assets/hoelzer/poseidon/test_data/bats_mx1_small.fasta --cores 4

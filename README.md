@@ -74,6 +74,13 @@ conda activate ohgenom
 nextflow self-update
 ```
 
+### Create the QIIME environment:
+
+wget https://data.qiime2.org/distro/core/qiime2-2021.4-py38-linux-conda.yml
+conda env create -n qiime2 --file qiime2-2021.4-py38-linux-conda.yml
+rm qiime2-2021.4-py38-linux-conda.yml
+conda activate qiime2
+
 # Disclaimers:
 
 - the primer_schemes folder is copied from https://github.com/artic-network/artic-ncov2019

@@ -1,9 +1,14 @@
 # experiment_folders
 local/
 
+#input files that should be prepared locally
+protocol_input_files/blast_sequences/
+
 # output files
 .log
 .out
+.nextflow.*
+.nextflow/
 
 
 # Byte-compiled / optimized / DLL files

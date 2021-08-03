@@ -62,4 +62,19 @@ while read -r line; do
 	cap3 $1/assembly/res_${barcode_name}/res4/contigs.fasta > $1/assembly/res_${barcode_name}/res4/output.txt
 	cap3 $1/assembly/res_${barcode_name}/res5/contigs.fasta > $1/assembly/res_${barcode_name}/res5/output.txt	
 done < $2
+
+#Paso 8: Clasificación por segmento
+makeblastdb -in db_influenza.fasta -dbtype nucl -out db_influenza 
+while read -r line; do
+	barcode_name=${line}
+	cd /home/generico/oh-dev/cw_onehealth_protocols/local/influenza/assembly/res_${barcode_name}/res1
+	blastn -db db_influenza -query contigs.fasta -num_threads 8 -outfmt "6 qseqid pident qcovs evalue qlen slen stitle" -max_target_seqs 1 -evalue 1e-20 -perc_identity 85 -word_size 10 -out ensayo_2_contigs.txt
+	cd /home/generico/oh-dev/cw_onehealth_protocols/local/influenza/assembly/res_${barcode_name}/res2
 	
+	cd /home/generico/oh-dev/cw_onehealth_protocols/local/influenza/assembly/res_${barcode_name}/res3
+        
+	cd /home/generico/oh-dev/cw_onehealth_protocols/local/influenza/assembly/res_${barcode_name}/res4
+        
+	cd /home/generico/oh-dev/cw_onehealth_protocols/local/influenza/assembly/res_${barcode_name}/res5
+        
+done < $2
