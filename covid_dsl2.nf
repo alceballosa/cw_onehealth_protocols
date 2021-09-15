@@ -19,6 +19,8 @@ process BASECALLING {
 
   echo true
 
+  publishDir "${params.output_folder}/", pattern: "${params.source_folder}/guppy/sequencing_summary.txt", mode:'copy'
+
   output:
   path 'basecalled_folder'
 
