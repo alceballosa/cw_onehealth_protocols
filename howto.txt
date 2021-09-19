@@ -40,7 +40,7 @@ nextflow -C covid.conf run covid_dsl2.nf -w /dev/shm/work -resume -with-report .
 
 #NEXTFLOW CHTC
 https://www.notion.so/CWOH-CHTC-9788b7964b1c40e88a232a60e22fdae7
-condor_submit chtc-submit/cwoh/covid_seq.sub script=chtc-submit/cwoh/covid_seq.sh dir=test_data_02_11_2021
+condor_submit ~/chtc-submit/cwoh/covid_seq.sub script=~/chtc-submit/cwoh/covid_seq.sh dir=test_from_lab
 
 
 POSEIDON NEXTFLOW:
