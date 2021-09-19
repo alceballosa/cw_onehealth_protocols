@@ -39,9 +39,9 @@ nextflow  -c covid.conf run covid_dsl2.nf -log ./local/seq010721/logs/log.log -w
 nextflow -C covid.conf run covid_dsl2.nf -w /dev/shm/work -resume -with-report ./local/seq010721/reports/cov_report.html -with-timeline ./local/seq010721/reports/cov_timeline.html -bg > ./local/seq010721/log.out
 
 #NEXTFLOW CHTC
+https://www.notion.so/CWOH-CHTC-9788b7964b1c40e88a232a60e22fdae7
 condor_submit chtc-submit/cwoh/covid_seq.sub script=chtc-submit/cwoh/covid_seq.sh dir=test_data_02_11_2021
 
 
 POSEIDON NEXTFLOW:
-
 NXF_VER=20.10.0 nextflow run hoelzer/poseidon -r v1.0.1 --fasta ~/.nextflow/assets/hoelzer/poseidon/test_data/bats_mx1_small.fasta --cores 4
