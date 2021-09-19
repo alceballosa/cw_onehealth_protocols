@@ -19,16 +19,18 @@ process BASECALLING {
 
   echo true
 
-  publishDir "${params.output_folder}/", pattern: "${params.source_folder}/guppy/sequencing_summary.txt", mode:'copy'
+  publishDir "${params.output_folder}/sequencing_summary/", pattern: "sequencing_summary.txt", mode:'copy'
 
   output:
   path 'basecalled_folder'
+  path 'sequencing_summary.txt'
 
   script:
   """
   guppy_basecaller -i ${params.source_folder}/fast5/ -s ${params.source_folder}/guppy/ -c dna_r9.4.1_450bps_fast.cfg --cpu_threads_per_caller ${params.threads_basecalling} --as_cpu_threads_per_scaler ${params.threads_basecalling} --as_num_scalers 32 --num_alignment_threads ${params.threads_basecalling} --num_callers 1
   mkdir basecalled_folder
   cat ${params.source_folder}/guppy/pass/*.fastq > basecalled_folder/all.fastq
+  cp ${params.source_folder}/guppy/sequencing_summary.txt ./sequencing_summary.txt
   """
 }
 
@@ -91,8 +93,8 @@ process BARCODE_PROCESSING {
 }
 
 workflow{
-  basecalled_folder = BASECALLING()
-  barcode_folders = DEMULTIPLEXING(basecalled_folder)
+  basecalling_output = BASECALLING()
+  barcode_folders = DEMULTIPLEXING(basecalling_output.out[0])
   barcode_folders_ch = barcode_folders.flatten()
   BARCODE_PROCESSING(barcode_folders_ch)
 }
