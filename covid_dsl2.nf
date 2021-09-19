@@ -22,8 +22,8 @@ process BASECALLING {
   publishDir "${params.output_folder}/sequencing_summary/", pattern: "sequencing_summary.txt", mode:'copy'
 
   output:
-  path 'basecalled_folder'
-  path 'sequencing_summary.txt'
+  path 'basecalled_folder', emit: basecalled_folder
+  path 'sequencing_summary.txt', emit: sequencing_summary
 
   script:
   """
@@ -93,8 +93,8 @@ process BARCODE_PROCESSING {
 }
 
 workflow{
-  basecalling_output = BASECALLING()
-  barcode_folders = DEMULTIPLEXING(basecalling_output.out[0])
+  BASECALLING()
+  barcode_folders = DEMULTIPLEXING(BASECALLING.out.basecalled_folder)
   barcode_folders_ch = barcode_folders.flatten()
   BARCODE_PROCESSING(barcode_folders_ch)
 }
